@@ -69,3 +69,26 @@ def calcular_aptitud(cromosoma):
             return 0.01 # Penalización por ser mayor a la cantidad maxima o menor a la cantidad minima
             
     return valor_total
+
+def seleccion_ruleta(poblacion, aptitudes):
+    """Selección proporcional (Ruleta) calculando P_sel y P_sel_acum."""
+    # 1. Calcular el Total de las aptitudes
+    total_aptitud = sum(aptitudes)
+    
+    # 2. Calcular P_sel para cada individuo: f(x) / Total
+    p_sel = [aptitud / total_aptitud for aptitud in aptitudes]
+    
+    # 3. Calcular P_sel_acum (Suma acumulada de P_sel)
+    p_sel_acum = []
+    acumulado = 0.0
+    for p in p_sel:
+        acumulado += p
+        p_sel_acum.append(acumulado)
+        
+    # 4. Generar número aleatorio r con distribución uniforme continua
+    r = random.uniform(0, 1)
+    
+    # 5. Seleccionar al individuo evaluando r contra P_sel_acum
+    for i, p_acum in enumerate(p_sel_acum):
+        if r <= p_acum:
+            return poblacion[i]

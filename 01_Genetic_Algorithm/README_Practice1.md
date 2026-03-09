@@ -74,3 +74,7 @@ python solution_practice_1.py
 ```
 
 4. El programa limpiará la consola automáticamente y mostrará el arreglo con la mejor combinación encontrada, la ganancia total obtenida en Galleons y el peso final que ocupan en la mochila.
+
+## Mejor solución real
+
+![Mejor solución](../assets/best_solution_practice_1.png)

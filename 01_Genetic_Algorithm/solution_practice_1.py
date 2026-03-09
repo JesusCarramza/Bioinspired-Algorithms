@@ -107,3 +107,13 @@ def cruza_uniforme(padre1, padre2):
             hijo1.append(padre2[i])
             hijo2.append(padre1[i])
     return hijo1, hijo2
+
+def mutacion_uniforme(cromosoma):
+    """Mutación uniforme: evalúa la probabilidad de mutación gen por gen."""
+    for i in range(len(cromosoma)):
+        # Se genera un número aleatorio entre 0 y 1 por cada gen
+        if random.uniform(0, 1) < PROB_MUTACION:
+            # Se muta el gen asignando un nuevo valor entre 0 y 10.
+            # Se mantiene CANTIDAD_MINIMA para no generar individuos inválidos de origen.
+            cromosoma[i] = random.randint(CANTIDAD_MINIMA[i], MAX_CANTIDAD)
+    return cromosoma

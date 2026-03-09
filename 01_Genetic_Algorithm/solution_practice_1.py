@@ -92,3 +92,18 @@ def seleccion_ruleta(poblacion, aptitudes):
     for i, p_acum in enumerate(p_sel_acum):
         if r <= p_acum:
             return poblacion[i]
+
+def cruza_uniforme(padre1, padre2):
+    """
+    Ejecuta la cruza uniforme gen a gen asumiendo que la probabilidad ya se cumplió.
+    """
+    hijo1, hijo2 = [], []
+    for i in range(7):
+        u = random.uniform(0, 1)
+        if u <= 0.5:
+            hijo1.append(padre1[i])
+            hijo2.append(padre2[i])
+        else:
+            hijo1.append(padre2[i])
+            hijo2.append(padre1[i])
+    return hijo1, hijo2

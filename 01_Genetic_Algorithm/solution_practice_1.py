@@ -117,3 +117,64 @@ def mutacion_uniforme(cromosoma):
             # Se mantiene CANTIDAD_MINIMA para no generar individuos inválidos de origen.
             cromosoma[i] = random.randint(CANTIDAD_MINIMA[i], MAX_CANTIDAD)
     return cromosoma
+
+def ag_mochila():
+    # Inicialización: Se consiguen los primeros 10 individuos
+    poblacion = [generar_cromosoma() for _ in range(POBLACION_TAM)]
+    
+    for gen in range(GENERACIONES):
+        nueva_poblacion = []
+        
+        # Esto reduce drásticamente el costo computacional.
+        aptitudes_actuales = [calcular_aptitud(ind) for ind in poblacion]
+        
+        # Iteramos hasta que la nueva población alcance el tamaño establecido (10 individuos)
+        while len(nueva_poblacion) < POBLACION_TAM:
+            
+            # 1 y 2. Seleccionar padres de TODA la población (con reemplazo).
+            # Un mismo individuo excepcionalmente apto puede ser padre varias veces unicamente participando en múltiples cruzas.
+            padre1 = seleccion_ruleta(poblacion, aptitudes_actuales)
+            padre2 = seleccion_ruleta(poblacion, aptitudes_actuales)
+            while padre2 == padre1: # Filtro para asegurarnos que no se cruce con el mismo
+                padre2 = seleccion_ruleta(poblacion, aptitudes_actuales)
+
+            # 3. Verificamos la probabilidad de cruza
+            if random.uniform(0, 1) <= PROB_CRUZA:
+                # Se realiza la cruza
+                hijo1, hijo2 = cruza_uniforme(padre1, padre2)
+                
+                # Mutación aplicada a los hijos generados
+                hijo1 = mutacion_uniforme(hijo1)
+                hijo2 = mutacion_uniforme(hijo2)
+            else:
+                # Si no hay cruza, los descendientes son clones exactos
+                hijo1, hijo2 = padre1[:], padre2[:]
+            
+            # 4. Verificación del fitness (Aptitud) de la familia completa
+            familia = [padre1, padre2, hijo1, hijo2]
+            familia.sort(key=calcular_aptitud, reverse=True)
+            
+            # Los 2 mayores pasan a la siguiente generación
+            nueva_poblacion.append(familia[0])
+            
+            # Validación de seguridad por si POBLACION_TAM fuera un número impar en el futuro
+            if len(nueva_poblacion) < POBLACION_TAM:
+                nueva_poblacion.append(familia[1])
+            
+        # Actualizamos la población global para la siguiente iteración
+        poblacion = nueva_poblacion
+
+    # Resultados finales
+    aptitudes_finales = [calcular_aptitud(ind) for ind in poblacion]
+    mejor_indice = aptitudes_finales.index(max(aptitudes_finales))
+    mejor_solucion = poblacion[mejor_indice]
+
+    os.system(CLEAR_CMD)
+    print(f"\n\n{Color.CYAN}--- RESULTADO DE LA OPTIMIZACIÓN ---{Color.RESET}")
+    print(f"Mejor cromosoma encontrado: {Color.YELLOW}{mejor_solucion}{Color.RESET}")
+    print(f"Valor total (Galleons): {Color.GREEN}{calcular_aptitud(mejor_solucion)}{Color.RESET}")
+    peso_final = sum(mejor_solucion[i] * pesos[i] for i in range(7))
+    print(f"Peso total (Libras): {Color.CYAN}{peso_final} / {MAX_PESO}{Color.RESET}")
+
+if __name__ == "__main__":
+    ag_mochila()

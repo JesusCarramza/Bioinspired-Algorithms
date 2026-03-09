@@ -55,3 +55,17 @@ def generar_cromosoma():
         if peso_total <= MAX_PESO:
             return candidato
 
+def calcular_aptitud(cromosoma):
+    """Calcula el valor total. Aplica penalización severa si excede el peso o incumple mínimos."""
+    peso_total = sum(cromosoma[i] * pesos[i] for i in range(7))
+    valor_total = sum(cromosoma[i] * valores[i] for i in range(7))
+    
+    # Verificar restricciones
+    if peso_total > MAX_PESO:
+        return 0.01 # Penalización por exceder peso (usamos 0.01 para no romper la ruleta)
+    
+    for i in range(7):
+        if cromosoma[i] < CANTIDAD_MINIMA[i] or cromosoma[i] > MAX_CANTIDAD:
+            return 0.01 # Penalización por ser mayor a la cantidad maxima o menor a la cantidad minima
+            
+    return valor_total

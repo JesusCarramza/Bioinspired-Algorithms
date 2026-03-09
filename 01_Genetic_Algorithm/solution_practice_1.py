@@ -36,3 +36,22 @@ POBLACION_TAM = 10
 GENERACIONES = 50
 PROB_CRUZA = 0.85
 PROB_MUTACION = 0.1
+
+def generar_cromosoma():
+    """
+    Genera un cromosoma válido mediante muestreo por rechazo.
+    Garantiza que el individuo cumpla con las restricciones de peso máximo 
+    y el inventario mínimo antes de integrarse a la población inicial.
+    """
+    while True:
+        # 1. Generar candidato con las restricciones de cantidad
+        candidato = [random.randint(CANTIDAD_MINIMA[i], MAX_CANTIDAD) for i in range(7)]
+        
+        # 2. Calcular su peso total
+        peso_total = sum(candidato[i] * pesos[i] for i in range(7))
+        
+        # 3. Condición de aceptación: Si el peso es válido, se retorna.
+        # Si excede MAX_PESO, el ciclo repite el proceso y genera uno nuevo.
+        if peso_total <= MAX_PESO:
+            return candidato
+

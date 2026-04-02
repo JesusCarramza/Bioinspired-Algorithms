@@ -62,3 +62,14 @@ for t in range(iteraciones):
         if aptitud_actual < gbest_val:
             gbest_val = aptitud_actual
             gbest_pos = np.copy(posiciones[i])
+
+        # 5. Imprimir lo solicitado por las instrucciones
+        print(f"Partícula {i+1:02d} | "
+            f"Posición: [{posiciones[i][0]: 7.4f}, {posiciones[i][1]: 7.4f}] | "
+            f"Velocidad: [{velocidades[i][0]: 7.4f}, {velocidades[i][1]: 7.4f}] | "
+            f"pbest: {pbest_val[i]: 7.4f} | "
+            f"gbest: {gbest_val: 7.4f}")
+
+print("\n=== Resultado Final ===")
+print(f"Mejor valor mínimo encontrado (gbest): {gbest_val:.4f}")
+print(f"Coordenadas del mínimo: X = {gbest_pos[0]:.4f}, Y = {gbest_pos[1]:.4f}")

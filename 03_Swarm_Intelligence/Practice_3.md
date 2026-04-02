@@ -12,8 +12,9 @@
     - Número de partículas: 20
     - Iteraciones: 50
     - a= 0.4    (inercia)
-    - b1= 0.7  (aprendizaje local)
-    - b2 = 1.2   (aprendizaje global)
+    - b1= 0.7  (aprendizaje local) -> (Influencia Propia)
+    - b2 = 1.2   (aprendizaje global) -> (Influencia Social)
+    - Numero de vecinos: No aplica (Se hace solo con Global en la Practica)
 
 3. En cada iteración imprimir:
     - Posición de la partícula

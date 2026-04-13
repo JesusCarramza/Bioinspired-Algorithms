@@ -4,7 +4,7 @@
 
 **Práctica de Inteligencia de Enjambre**
 
-1. Realizar la minimización de la función en el intervalo de valores (-5,5) para (x, y) usando PSO.
+1. Realizar la **minimización** de la función en el intervalo de valores (-5,5) para (x, y) usando PSO.
 
 ![Funcion Objetivo](../assets/objective_function_practice_3.png)
 

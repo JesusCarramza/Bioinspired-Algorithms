@@ -1,4 +1,6 @@
 import numpy as np
+import sys
+import os
 
 # --- 1. Definir parámetros de ejecución ---
 N = 20           # Número de partículas
@@ -27,6 +29,27 @@ pbest_val = np.array([funcion_objetivo(p[0], p[1]) for p in posiciones])
 gbest_idx = np.argmin(pbest_val)
 gbest_pos = np.copy(pbest_pos[gbest_idx])
 gbest_val = pbest_val[gbest_idx]
+
+# --- Configuración para guardar en .txt ---
+# 1. Obtenemos la ruta absoluta de la carpeta donde está este script (.py)
+directorio_script = os.path.dirname(os.path.abspath(__file__))
+
+# 2. Unimos esa ruta con el nombre del archivo
+ruta_archivo = os.path.join(directorio_script, "results_practice_3.txt")
+
+# 3. Usamos la ruta completa para crear/abrir el archivo
+archivo_resultados = open(ruta_archivo, "w", encoding="utf-8")
+consola_original = sys.stdout
+
+class EscrituraDual:
+    def write(self, texto):
+        consola_original.write(texto)
+        archivo_resultados.write(texto)
+    def flush(self):
+        consola_original.flush()
+        archivo_resultados.flush()
+
+sys.stdout = EscrituraDual()
 
 print("=== Inicio de la Optimización PSO Global ===")
 
@@ -73,3 +96,7 @@ for t in range(iteraciones):
 print("\n=== Resultado Final ===")
 print(f"Mejor valor mínimo encontrado (gbest): {gbest_val:.4f}")
 print(f"Coordenadas del mínimo: X = {gbest_pos[0]:.4f}, Y = {gbest_pos[1]:.4f}")
+
+# --- Restaurar consola y cerrar archivo ---
+sys.stdout = consola_original
+archivo_resultados.close()

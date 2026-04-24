@@ -1,0 +1,7 @@
+numpy
+deap
+sympy
+matplotlib
+scikit-learn
+gplearn
+graphviz

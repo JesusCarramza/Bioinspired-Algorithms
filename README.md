@@ -16,7 +16,23 @@ Currently, the repository contains the following implementations:
 * **Key Concepts:** Rejection sampling for initial population, Roulette Wheel Selection, Uniform Crossover, Uniform Mutation, and Generational Replacement with elitism.
 * **Documentation:** [Read the full explanation here](./01_Genetic_Algorithm/README_Practice1.md).
 
-*(More practices will be added here soon...)*
+### [02_Genetic_Programming](./02_Genetic_Programming)
+**Practice 2: Symbolic Regression (GPLearn & DEAP)**
+* **Description:** Implementation of Symbolic Regression using the GPLearn and DEAP libraries. The practice involves implementing standard examples and modifying the DEAP algorithm to approximate a specific 2-variable mathematical function.
+* **Key Concepts:** Genetic Programming, Symbolic Regression, GPLearn, DEAP framework.
+* **Documentation:** [Read the practice instructions here](./02_Genetic_Programming/Practice_2.md).
+
+### [03_Particle_Swarm_Optimization](./03_Particle_Swarm_Optimization)
+**Practice 3: Particle Swarm Optimization (PSO) - Global Topology**
+* **Description:** Minimization of a 2D mathematical function using Particle Swarm Optimization. The implementation uses a global topology, tracking the position, velocity, personal best (pbest), and global best (gbest) for a swarm of 20 particles over 50 iterations.
+* **Key Concepts:** Particle Swarm Optimization, Global Topology, Swarm Intelligence, Inertia weight, Cognitive and Social learning factors.
+* **Documentation:** [Read the practice instructions here](./03_Particle_Swarm_Optimization/Practice_3.md).
+
+### [4_Ant_Colony_Optimization](./4_Ant_Colony_Optimization)
+**Practice 4: Ant Colony Optimization (ACO)**
+* **Description:** Implementation of the Ant Colony Optimization algorithm to find optimal paths. It involves calculating transition probabilities based on heuristic information and pheromone trails, as well as applying pheromone update rules (evaporation and deposit) after each iteration.
+* **Key Concepts:** Ant Colony Optimization, Swarm Intelligence, Pheromone Update, Transition Probability.
+* **Documentation:** [Read the practice instructions here](./4_Ant_Colony_Optimization/Practice_4.md).
 
 
 

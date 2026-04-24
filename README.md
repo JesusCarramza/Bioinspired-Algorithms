@@ -4,7 +4,7 @@ Welcome to the **Bioinspired-Algorithms** repository. This project is a structur
 
 The primary goal of this repository is to translate biological concepts into computational heuristics. By implementing these algorithms from scratch in Python, this project demonstrates the core mathematical and logical mechanics behind Evolutionary Computing, focusing on solving complex optimization and search problems.
 
-> 🚧 **Work in Progress:** This repository is currently under active development. It is an ongoing academic and personal project that will be continuously updated with new practices, algorithms, and modules over the next 4 months.
+> 🚧 **Work in Progress:** This repository is currently under active development. It is an ongoing academic and personal project that will be continuously updated with new practices, algorithms, and modules over the next 2 months.
 
 ## 🗂️ Repository Structure & Practices
 
@@ -27,15 +27,31 @@ Currently, the repository contains the following implementations:
 git clone https://github.com/JesusCarramza/Bioinspired-Algorithms.git
 ```
 
-**2. Navigate to the specific practice folder:**
+**2. Create a Virtual Enviroment**
+```bash
+python -m venv my_virtual_enviorment
+```
+
+**3. Activate the Virtual Enviroment**
+```bash
+# Windows
+my_virtual_enviorment\Scripts\activate
+
+# Linux/Mac
+source my_virtual_enviorment/bin/activate
+```
+
+**4. Install requirements**
+```bash
+pip install -r requirements.txt
+```
+
+**5. Navigate to the specific practice folder:**
 ```bash
 cd 01_Genetic_Algorithm
 ```
-**3. Execute the main script:**
+
+**6. Execute the main script:**
 ```bash
 python solution_practice_1.py
 ```
-
-## 🛠️ Requirements
-
-At this moment, the algorithms are built using strictly the Python Standard Library (`random, os`), so no external installations are required. As the repository grows and more complex algorithms or visualizations are introduced, a `requirements.txt` file will be implemented to manage dependencies (like NumPy or Matplotlib).
